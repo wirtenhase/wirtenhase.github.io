@@ -1,0 +1,9 @@
+UKM GITHUB PAGES – PRÜFBERICHT
+================================
+index.html vorhanden: OK
+.nojekyll vorhanden: OK
+404.html vorhanden: OK
+Pages Workflow vorhanden: OK
+JavaScript-Syntax: OK
+Absolute /-Pfade gefunden: 0
+Externe src/href-Abhängigkeiten: 0

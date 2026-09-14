@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UKM Ausbildungsportal</title>
+<style>
+:root{--bg:#061018;--panel:#0d1e29;--line:#1d3a48;--text:#eef8fb;--muted:#93aab5;--accent:#31d6cb;--blue:#487dff;--green:#4fd49a;--yellow:#e9bf69;--red:#ff6c78}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--text);background:radial-gradient(circle at 20% 0%,rgba(49,214,203,.12),transparent 30rem),linear-gradient(#061018,#04090d);font:15px/1.55 Inter,system-ui,sans-serif}a{text-decoration:none;color:inherit}.hidden{display:none!important}
+header{position:sticky;top:0;z-index:20;min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px max(20px,calc((100vw - 1180px)/2));background:#061018e8;border-bottom:1px solid #ffffff0d;backdrop-filter:blur(16px)}
+.brand{display:flex;align-items:center;gap:10px;cursor:pointer}.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#36aeea);display:grid;place-items:center;color:#031113;font-weight:900;font-size:28px}.brandText{display:grid;line-height:1.05}.brandText small{color:var(--muted);font-size:11px}
+nav{display:flex;align-items:center;gap:15px;flex-wrap:wrap;color:#bfd0d8}.navlink{cursor:pointer}.navlink:hover{color:#fff}
+button,.primary,.secondary,.danger,.loginbtn{border:0;border-radius:11px;padding:11px 15px;font-weight:800;cursor:pointer}.loginbtn{background:var(--blue);color:#fff}.primary{background:linear-gradient(135deg,var(--accent),#2ba7e8);color:#041113}.secondary{background:#193441;color:#eef8fb;border:1px solid #2a4b5b}.danger{background:#ff6c7818;color:#ff929d;border:1px solid #ff6c7845}.small{padding:7px 10px;font-size:13px}
+.container{width:min(1180px,calc(100% - 36px));margin:auto;padding-bottom:80px}.hero{min-height:520px;display:grid;grid-template-columns:1.2fr .8fr;gap:50px;align-items:center}.hero h1,.pagehead h1{font-size:clamp(44px,6vw,74px);line-height:1;letter-spacing:-3px;margin:10px 0 20px}.hero h1 span{color:#36bce9}.hero p,.pagehead p{color:var(--muted);font-size:18px;max-width:720px}.eyebrow{font-size:12px;letter-spacing:2px;color:var(--accent);font-weight:900}.heroActions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.heroCard{min-height:280px;border:1px solid var(--line);border-radius:25px;background:linear-gradient(145deg,#143544,#07151e);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:9px}.heroCard span{color:var(--muted)}.plus{width:78px;height:78px;border-radius:23px;background:#31d6cb1c;color:var(--accent);display:grid;place-items:center;font-size:48px;font-weight:900}.center{margin:auto}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:5px 0 30px}.stat,.area,.card,.panel,.loginCard{border:1px solid var(--line);background:linear-gradient(180deg,#0f222e,#08161e);border-radius:18px}.stat{padding:20px;text-align:center}.stat b{display:block;font-size:27px}.stat span{color:var(--muted);font-size:13px}
+.sectionTitle{text-align:center;margin:55px 0 24px}.sectionTitle h2,.panel h2{font-size:30px;margin:4px 0}.areaGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.area{display:flex;gap:13px;align-items:center;padding:18px}.areaIcon{width:44px;height:44px;display:grid;place-items:center;border-radius:12px;background:#31d6cb16;color:var(--accent);font-size:24px}.area h3{margin:0}.area p,.card p{margin:3px 0;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:20px}.card h3{font-size:20px;margin:12px 0 7px}.badge,.status{display:inline-flex;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:800}.badge{color:#91fff6;background:#31d6cb19}.status.success{color:#77e9b5;background:#4fd49a1f}.status.pending{color:#efc97e;background:#e1b85f1f}.status.off{color:#abb9bf;background:#263841}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.meta{color:#89a4ae;font-size:13px;margin:16px 0}
+.pagehead{padding:50px 0 28px}.pagehead h1{font-size:50px}.loginShell{min-height:70vh;display:grid;place-items:center;padding:45px 0}.loginCard{width:min(480px,100%);padding:30px;text-align:center}.loginCard h1{font-size:36px;margin:8px 0}.loginCard>p{color:var(--muted)}.form,.list{display:grid;gap:12px;margin-top:16px;text-align:left}.formRow{display:flex;gap:8px;align-items:center}.grow{flex:1}
+label{display:grid;gap:6px;font-weight:700;color:#c9dbe1}input,select,textarea{width:100%;border:1px solid #294b5a;border-radius:10px;background:#081720;color:white;padding:11px 12px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--accent)}textarea{resize:vertical}
+.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{padding:21px}.item{display:flex;gap:8px;align-items:center;padding:9px;border:1px solid #173542;border-radius:11px;background:#091922}.gap{margin-top:18px}.tableWrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;background:#091820}th,td{padding:13px 14px;text-align:left;border-bottom:1px solid #17313d}th{font-size:12px;color:#7996a3;text-transform:uppercase;background:#0b202a}.footer{padding:28px;text-align:center;color:#6d8792;border-top:1px solid #ffffff0d}
+.notice{padding:12px 14px;border-radius:10px;background:#e9bf6915;border:1px solid #e9bf6945;color:#f4d99e;margin:14px 0}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.areaGrid,.stats{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr 1fr}.adminGrid{grid-template-columns:1fr}}
+@media(max-width:640px){header{position:static;align-items:flex-start;flex-direction:column}.container{width:calc(100% - 24px)}.hero{min-height:auto;padding:35px 0}.hero h1{font-size:44px;letter-spacing:-1.5px}.areaGrid,.cards,.stats{grid-template-columns:1fr}.formRow,.item{align-items:stretch;flex-direction:column}.pagehead h1{font-size:38px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand" onclick="go('home')">
+    <div class="logo">+</div>
+    <div class="brandText"><b>UKM</b><small>Ausbildungsportal</small></div>
+  </div>
+  <nav>
+    <span class="navlink" onclick="go('home')">Startseite</span>
+    <span id="navDashboard" class="navlink hidden" onclick="go('dashboard')">Meine Ausbildungen</span>
+    <span id="navTrainer" class="navlink hidden" onclick="go('trainer')">Ausbilder</span>
+    <span id="navAdmin" class="navlink hidden" onclick="go('admin')">Admin</span>
+    <button id="loginBtn" class="loginbtn" onclick="go('login')">Mitarbeiter-Login</button>
+    <button id="logoutBtn" class="secondary hidden" onclick="logout()">Abmelden</button>
+  </nav>
+</header>
+
+<main class="container">
+<section id="homePage">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">GEMEINSAM FÜR MEHR MENSCHENLEBEN</span>
+      <h1>Deine Ausbildung.<br><span>Deine Zukunft.</span></h1>
+      <p>Das interne Ausbildungsportal für Mitarbeiter.</p>
+      <div class="heroActions">
+        <button class="primary" onclick="state.loggedIn?go('dashboard'):go('login')">Jetzt starten</button>
+        <button class="secondary" onclick="document.getElementById('bereiche').scrollIntoView()">Bereiche ansehen</button>
+      </div>
+    </div>
+    <div class="heroCard"><div class="plus">+</div><b>Universitätsklinikum Münster</b><span>Ausbildung · Verantwortung · Teamarbeit</span></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b id="statAreas"></b><span>Fachbereiche</span></div>
+    <div class="stat"><b id="statTrainings"></b><span>aktive Ausbildungen</span></div>
+    <div class="stat"><b>Intern</b><span>Mitarbeiterbereich</span></div>
+    <div class="stat"><b>24/7</b><span>online verfügbar</span></div>
+  </div>
+
+  <section id="bereiche">
+    <div class="sectionTitle"><span class="eyebrow">UNSERE BEREICHE</span><h2>Fachbereiche</h2></div>
+    <div id="areaGrid" class="areaGrid"></div>
+  </section>
+
+  <section>
+    <div class="sectionTitle"><span class="eyebrow">AUSBILDUNGEN</span><h2>Aktuell verfügbar</h2></div>
+    <div id="homeTrainings" class="cards"></div>
+  </section>
+</section>
+
+<section id="loginPage" class="hidden">
+  <div class="loginShell">
+    <div class="loginCard">
+      <div class="plus center">+</div>
+      <span class="eyebrow">INTERNER ZUGANG</span>
+      <h1>Mitarbeiter-Login</h1>
+      <div class="notice">GitHub Pages hat kein Backend. Dieser Login wird nur im Browser geprüft und ist daher nicht für echte Zugangssicherheit geeignet.</div>
+      <div class="form">
+        <label>Dienstnummer<input id="loginService" value="UKM-000001"></label>
+        <label>Passwort<input id="loginPassword" type="password" value="admin123"></label>
+        <button class="primary" onclick="login()">Anmelden</button>
+      </div>
+      <p style="margin-top:18px;font-size:13px">Test-Admin: UKM-000001 / admin123</p>
+    </div>
+  </div>
+</section>
+
+<section id="dashboardPage" class="hidden">
+  <div class="pagehead"><span class="eyebrow">MEIN BEREICH</span><h1 id="welcome"></h1><p id="serviceNo"></p></div>
+  <div id="dashboardTrainings" class="cards"></div>
+</section>
+
+<section id="trainerPage" class="hidden">
+  <div class="pagehead"><span class="eyebrow">AUSBILDERBEREICH</span><h1>Teilnehmer verwalten</h1></div>
+  <div class="tableWrap"><table><thead><tr><th>Mitarbeiter</th><th>Dienstnummer</th><th>Bereich</th><th>Ausbildung</th><th>Status</th><th>Aktion</th></tr></thead><tbody id="trainerBody"></tbody></table></div>
+</section>
+
+<section id="adminPage" class="hidden">
+  <div class="pagehead"><span class="eyebrow">ADMINISTRATION</span><h1>Portal verwalten</h1></div>
+  <div class="adminGrid">
+    <section class="panel">
+      <h2>Mitarbeiter anlegen</h2>
+      <div class="form">
+        <label>Name<input id="newUserName" placeholder="Max Mustermann"></label>
+        <label>Rolle<select id="newUserRole"><option value="employee">Mitarbeiter</option><option value="trainer">Ausbilder</option><option value="admin">Administrator</option></select></label>
+        <label>Bereich<select id="newUserArea"></select></label>
+        <button class="primary" onclick="generateUser()">Dienstnummer & Passwort generieren</button>
+      </div>
+      <div id="generatedBox" class="hidden" style="margin-top:16px;padding:14px;border:1px solid #31d6cb55;border-radius:12px;background:#31d6cb10"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Bereiche verwalten</h2>
+      <div class="formRow">
+        <input id="newArea" placeholder="Neuer Bereich">
+        <button class="primary small" onclick="addArea()">Hinzufügen</button>
+      </div>
+      <div id="adminAreas" class="list"></div>
+    </section>
+  </div>
+
+  <section class="panel gap">
+    <h2>Neue Ausbildung</h2>
+    <div class="form">
+      <label>Titel<input id="newTrainingTitle"></label>
+      <label>Bereich<select id="newTrainingArea"></select></label>
+      <label>Beschreibung<textarea id="newTrainingDesc" rows="3"></textarea></label>
+      <label>Dauer<input id="newTrainingDuration" type="number" value="60"></label>
+      <button class="primary" onclick="addTraining()">Ausbildung erstellen</button>
+    </div>
+  </section>
+
+  <section class="panel gap">
+    <h2>Mitarbeiterkonten</h2>
+    <div class="tableWrap"><table><thead><tr><th>Name</th><th>Dienstnummer</th><th>Rolle</th><th>Status</th></tr></thead><tbody id="userBody"></tbody></table></div>
+  </section>
+</section>
+</main>
+
+<footer class="footer">UKM Ausbildungsportal · GitHub Pages Version</footer>
+
+<script>
+const defaults={
+  loggedIn:false,current:null,
+  users:[{name:"Systemadministrator",service:"UKM-000001",password:"admin123",role:"admin",active:true}],
+  areas:["Kardiologie","HNO","Innere Medizin","Neurologie","Augenheilkunde","Psychiatrie","Chirurgie","Urologie"],
+  trainings:[
+    {id:1,title:"EKG Grundlagen",area:"Kardiologie",desc:"Grundlagen der EKG-Diagnostik und Interpretation.",duration:120,active:true},
+    {id:2,title:"Advanced Life Support",area:"Kardiologie",desc:"Erweiterte Notfallmaßnahmen und strukturierte Reanimation.",duration:180,active:true},
+    {id:3,title:"Untersuchungstechniken HNO",area:"HNO",desc:"Grundlagen wichtiger HNO-Untersuchungen.",duration:120,active:true},
+    {id:4,title:"Grundlagen Chirurgie",area:"Chirurgie",desc:"Einführung in chirurgische Abläufe und sterile Arbeitsweisen.",duration:150,active:true}
+  ],
+  enrollments:{}
+};
+let state=JSON.parse(localStorage.getItem("ukmGithubPages")||"null")||structuredClone(defaults);
+function save(){localStorage.setItem("ukmGithubPages",JSON.stringify(state))}
+function go(p){["home","login","dashboard","trainer","admin"].forEach(x=>document.getElementById(x+"Page").classList.add("hidden"));document.getElementById(p+"Page").classList.remove("hidden");render()}
+function login(){const s=document.getElementById("loginService").value.trim().toUpperCase(),p=document.getElementById("loginPassword").value;const u=state.users.find(x=>x.service===s&&x.password===p&&x.active);if(!u)return alert("Falsche Zugangsdaten");state.loggedIn=true;state.current=u;save();go("dashboard")}
+function logout(){state.loggedIn=false;state.current=null;save();go("home")}
+function enroll(id){state.enrollments[id]="angemeldet";save();render()}
+function complete(id){state.enrollments[id]="bestanden";save();render()}
+function addArea(){const v=document.getElementById("newArea").value.trim();if(v&&!state.areas.includes(v)){state.areas.push(v);document.getElementById("newArea").value="";save();render()}}
+function generateUser(){const name=document.getElementById("newUserName").value.trim();if(!name)return alert("Name fehlt");const role=document.getElementById("newUserRole").value;const num="UKM-"+Math.floor(100000+Math.random()*900000);const pw=Math.random().toString(36).slice(-8)+"!A1";state.users.push({name,service:num,password:pw,role,active:true});const b=document.getElementById("generatedBox");b.classList.remove("hidden");b.innerHTML="<b>"+name+"</b><br>Dienstnummer: <code>"+num+"</code><br>Startpasswort: <code>"+pw+"</code>";save();render()}
+function addTraining(){const title=document.getElementById("newTrainingTitle").value.trim(),area=document.getElementById("newTrainingArea").value,desc=document.getElementById("newTrainingDesc").value.trim(),duration=Number(document.getElementById("newTrainingDuration").value||60);if(!title||!desc)return alert("Titel/Beschreibung fehlen");state.trainings.push({id:Date.now(),title,area,desc,duration,active:true});save();render()}
+function render(){
+  document.getElementById("loginBtn").classList.toggle("hidden",state.loggedIn);
+  document.getElementById("logoutBtn").classList.toggle("hidden",!state.loggedIn);
+  document.getElementById("navDashboard").classList.toggle("hidden",!state.loggedIn);
+  document.getElementById("navTrainer").classList.toggle("hidden",!(state.loggedIn&&(state.current?.role==="trainer"||state.current?.role==="admin")));
+  document.getElementById("navAdmin").classList.toggle("hidden",!(state.loggedIn&&state.current?.role==="admin"));
+  document.getElementById("statAreas").textContent=state.areas.length;
+  document.getElementById("statTrainings").textContent=state.trainings.filter(t=>t.active).length;
+  document.getElementById("areaGrid").innerHTML=state.areas.map(a=>`<article class="area"><div class="areaIcon">+</div><div><h3>${a}</h3><p>${state.trainings.filter(t=>t.active&&t.area===a).length} aktive Ausbildungen</p></div></article>`).join("");
+  document.getElementById("homeTrainings").innerHTML=state.trainings.filter(t=>t.active).map(t=>`<article class="card"><span class="badge">${t.area}</span><h3>${t.title}</h3><p>${t.desc}</p><div class="meta">⏱ ${t.duration} Min.</div></article>`).join("");
+  if(state.current){document.getElementById("welcome").textContent="Willkommen, "+state.current.name;document.getElementById("serviceNo").textContent="Dienstnummer: "+state.current.service}
+  document.getElementById("dashboardTrainings").innerHTML=state.trainings.filter(t=>t.active).map(t=>{const s=state.enrollments[t.id];return `<article class="card"><div class="row"><span class="badge">${t.area}</span>${s?`<span class="status ${s==="bestanden"?"success":"pending"}">${s}</span>`:""}</div><h3>${t.title}</h3><p>${t.desc}</p><div class="meta">⏱ ${t.duration} Min.</div>${!s?`<button class="primary" onclick="enroll(${t.id})">Anmelden</button>`:s==="angemeldet"?`<button class="secondary">Bereits angemeldet</button>`:`<button class="secondary">✓ Abgeschlossen</button>`}</article>`}).join("");
+  document.getElementById("trainerBody").innerHTML=Object.entries(state.enrollments).map(([id,s])=>{const t=state.trainings.find(x=>x.id==id);return `<tr><td>Max Mustermann</td><td>UKM-200200</td><td>${t.area}</td><td>${t.title}</td><td><span class="status ${s==="bestanden"?"success":"pending"}">${s}</span></td><td>${s==="bestanden"?"Abgeschlossen":`<button class="primary small" onclick="complete(${t.id})">Bestanden</button>`}</td></tr>`}).join("")||`<tr><td colspan="6">Keine Anmeldungen</td></tr>`;
+  const opts=state.areas.map(a=>`<option>${a}</option>`).join("");document.getElementById("newUserArea").innerHTML=opts;document.getElementById("newTrainingArea").innerHTML=opts;
+  document.getElementById("adminAreas").innerHTML=state.areas.map((a,i)=>`<div class="item"><div class="grow">${a}</div><button class="danger small" onclick="state.areas.splice(${i},1);save();render()">Löschen</button></div>`).join("");
+  document.getElementById("userBody").innerHTML=state.users.map(u=>`<tr><td>${u.name}</td><td><code>${u.service}</code></td><td>${u.role}</td><td><span class="status ${u.active?"success":"off"}">${u.active?"Aktiv":"Aus"}</span></td></tr>`).join("");
+}
+render();
+</script>
+</body>
+</html>
